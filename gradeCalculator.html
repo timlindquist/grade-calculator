@@ -2,11 +2,11 @@
 <html>
 <body>
 
-<p>Calculate grade needed on final exam</p>
+<p>Calculate your grade needed on a final exam.</p>
 
 <form id="values" action="/action_page.php">
-  Grade in class now (%): <input type="text" name="currentGrade"><br>
-  Desired final grade (%): <input type="text" name="desiredGrade"><br>
+  Current grade (%): <input type="text" name="currentGrade"><br>
+  Desired grade (%): <input type="text" name="desiredGrade"><br>
   Final is worth (%): <input type="text" name="finalWorth"><br>
   <br>
   
@@ -20,19 +20,20 @@
 function calculate() {
  	var val = document.getElementById("values");
     
-    curGrade=Number(val.elements[0].value);
-    desGrade=Number(val.elements[1].value);
-    finalWeight=Number(val.elements[2].value);
+    let curGrade=Number(val.elements[0].value);
+    let desGrade=Number(val.elements[1].value);
+    let finalWeight=Number(val.elements[2].value);
     
     
-    gradeNeed=(curGrade*(finalWeight-100)+100*desGrade)/(finalWeight)
+    var gradeNeed=(curGrade*(finalWeight-100)+100*desGrade)/(finalWeight);
     
-    gradeNeed=Math.round(gradeNeed * 100) / 100
+    gradeNeed=Math.round(gradeNeed * 100) / 100;
     
-  	document.getElementById("ans").innerHTML = gradeNeed;
+    var msg="You will need " + gradeNeed +"% on the final to get a " + desGrade + "% in the class.";  
+    
+  	document.getElementById("ans").innerHTML = msg;
 }
 </script>
 
 </body>
 </html>
-
