@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Calculate grade needed on final exam</p>
+
+<form id="values" action="/action_page.php">
+  Grade in class now (%): <input type="text" name="currentGrade"><br>
+  Desired final grade (%): <input type="text" name="desiredGrade"><br>
+  Final is worth (%): <input type="text" name="finalWorth"><br>
+  <br>
+  
+  <input type="button" onclick="calculate()" value="Calculate">
+</form>
+
+
+<p id="ans"></p>
+
+<script>
+function calculate() {
+ 	var val = document.getElementById("values");
+    
+    curGrade=Number(val.elements[0].value);
+    desGrade=Number(val.elements[1].value);
+    finalWeight=Number(val.elements[2].value);
+    
+    
+    gradeNeed=(curGrade*(finalWeight-100)+100*desGrade)/(finalWeight)
+    
+    gradeNeed=Math.round(gradeNeed * 100) / 100
+    
+  	document.getElementById("ans").innerHTML = gradeNeed;
+}
+</script>
+
+</body>
+</html>
+
